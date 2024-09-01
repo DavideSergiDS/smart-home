@@ -1,0 +1,56 @@
+### Ref. API: https://core.telegram.org/bots/api
+
+@basePath = https://api.telegram.org/bot
+@token = 7441382040:AAG-cv8xOXzhyCfS8AqgbiA0P2xyueuWvds
+
+@DavideUserId = 6501729454
+@AriglianoHomeChannelId = -1002236133459
+
+###
+GET {{basePath}}{{token}}/getMe
+
+###
+@name = getUpdates
+GET {{basePath}}{{token}}/getUpdates?offset=
+
+###
+@name = sendMessage
+POST {{basePath}}{{token}}/sendMessage
+Content-Type: application/json
+
+{
+    "chat_id": {{AriglianoHomeChannelId}},
+    "text": "Hi all, I'm the bot ({{$timestamp}}). I'm sending just text."
+}
+
+###
+# @name sendPhoto
+POST {{basePath}}{{token}}/sendPhoto
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="chat_id"
+
+{{AriglianoHomeChannelId}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="caption"
+
+Hi all, I'm the bot ({{$timestamp}}). I'm sending a photo.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="photo"; filename="image.png"
+Content-Type: image/png
+
+< ./image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+@name = editMessagePhotoCaption
+POST {{basePath}}{{token}}/editMessageCaption
+Content-Type: application/json
+
+{
+    "chat_id": "{{AriglianoHomeChannelId}}",
+    "message_id": "{{sendPhoto.response.body.$.result.message_id}}",
+    "caption": "I'm the bot, I'm editing this message ({{$timestamp}})"
+}
