@@ -1,3 +1,5 @@
+// TODO: decouple telegram command/message handling from telemetry receiving process.
+
 import { Bot, InlineKeyboard } from "grammy";
 import {
   TelemetrySample,
