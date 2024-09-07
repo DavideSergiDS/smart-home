@@ -54,3 +54,31 @@ Content-Type: application/json
     "message_id": "{{sendPhoto.response.body.$.result.message_id}}",
     "caption": "I'm the bot, I'm editing this message ({{$timestamp}})"
 }
+
+### 
+@name = setInline
+POST {{basePath}}{{token}}/setInline
+
+### 
+@name = setMyCommands
+POST {{basePath}}{{token}}/setMyCommands
+Content-Type: application/json
+
+{
+    "commands": [
+        { "command": "mc1", "description": "Command 1 description manually set." },
+        { "command": "mc2", "description": "Command 2 description manually set." },
+        { "command": "mc3", "description": "Command 3 description manually set." },   
+    ],
+    "scope": { "type": "botCommandScopeAllPrivateChats" },
+    "language_code": "en",
+}
+
+###
+@name = setChatMenuButton
+POST {{basePath}}{{token}}/setChatMenuButton
+Content-Type: application/json
+
+{
+    "menu_button": { "type": "commands" }
+}
