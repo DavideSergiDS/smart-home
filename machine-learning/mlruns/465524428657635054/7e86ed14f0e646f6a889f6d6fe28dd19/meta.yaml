@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/465524428657635054/7e86ed14f0e646f6a889f6d6fe28dd19/artifacts
+end_time: 1755358067508
+entry_point_name: ''
+experiment_id: '465524428657635054'
+lifecycle_stage: active
+run_id: 7e86ed14f0e646f6a889f6d6fe28dd19
+run_name: bold-skunk-614
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755358059143
+status: 3
+tags: []
+user_id: davidesergi

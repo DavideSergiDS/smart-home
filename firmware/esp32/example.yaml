@@ -1,0 +1,32 @@
+esphome:
+  name: my_esp32_sensor
+  board: esp32dev
+
+wifi:
+  ssid: "FRITZ!Box 7530 VZ"
+  password: "ciaociao1"
+
+logger:
+  level: INFO
+
+api:
+  services:
+    - service: restart
+      then:
+        - lambda: |-
+            ESP.restart();
+
+ota:
+  password: "YOUR_OTA_PASSWORD"
+
+sensor:
+  - platform: dht
+    pin: GPIO4
+    model: DHT22
+    temperature:
+      name: "Living Room Temperature"
+      unit_of_measurement: "°C"
+    humidity:
+      name: "Living Room Humidity"
+      unit_of_measurement: "%"
+    update_interval: 60s
